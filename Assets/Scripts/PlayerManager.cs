@@ -26,6 +26,21 @@ public class PlayerManager : MonoBehaviour, IDamageable
         curHealth = maxHealth;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Pickup Items
+        Item item = collision.gameObject.GetComponent<Item>();
+
+        if(item != null)
+        {
+            if(InventoryManager.instance.AddItemToHotbar(item.id))
+            {
+                Destroy(item.gameObject);
+            }
+            
+        }
+    }
+
     public void RemoveHealth(int amount)
     {
         curHealth -= amount;

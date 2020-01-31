@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -40,10 +41,10 @@ public class InventoryManager : MonoBehaviour
             {
                 if(curItem.interactable)
                 {
-                    if(Time.time >= curItem.timeSinceLastInterfact + curItem.interactCd)
+                    if(Time.time >= curItem.timeSinceLastInteract + curItem.interactCd)
                     {
                         curItem.Interact();
-                        curItem.timeSinceLastInterfact = Time.time;
+                        curItem.timeSinceLastInteract = Time.time;
                     }
                 }
             }
@@ -94,7 +95,13 @@ public class InventoryManager : MonoBehaviour
         curSelectedSlot = number;
         hotbarSlots[curSelectedSlot - 1].outline.enabled = true;
         if (hotbarSlots[curSelectedSlot - 1].item != null)
+        {
             curItem = hotbarSlots[curSelectedSlot - 1].item;
+            if(curItem.interactable)
+            {
+                curItem.timeSinceLastInteract = Time.time;
+            }
+        }
         else curItem = null;
     }
 
@@ -103,12 +110,16 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             GameObject obj = Instantiate(slotPrefab, new Vector2(0,0), Quaternion.identity, hotbar);
+            obj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
             hotbarSlots.Add(obj.GetComponent<HotbarSlot>());
         }
     }
 
-    public void AddItemToHotbar(Item item)
+    public bool AddItemToHotbar(int id)
     {
+        Item item = ItemDataBase.instance.GetItemFromList(id);
+        if (item == null) return false;
+
         // Check if there are any free slots
         foreach(HotbarSlot slot in hotbarSlots)
         {
@@ -124,7 +135,7 @@ public class InventoryManager : MonoBehaviour
                         if (slot.amount < slot.item.stackSize)
                         {
                             slot.amount++;
-                            break;
+                            return true;
                         }
                     }
                 }
@@ -134,9 +145,12 @@ public class InventoryManager : MonoBehaviour
                 // Free slot, add item, then return
                 slot.item = item;
                 slot.amount++;
-                break;
+                slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                slot.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = item.imgSprite;
+                return true;
             }
         }
+        return false;
     }
 
     private HotbarSlot GetHotbarSlot(int number)

@@ -1,5 +1,5 @@
-﻿public interface IHarvestAble
+﻿public interface IHarvestable
 {
-    void TakeDamage();
-    void Harvest();
+    void TakeDamage(int amount);
+    void HarvestItem();
 }

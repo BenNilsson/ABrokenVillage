@@ -10,16 +10,25 @@ public class Item : MonoBehaviour
     public bool interactable;
     public int stackSize = 1;
     public bool stackable;
-
+    public int id;
     public float interactCd = 1f;
-    public float timeSinceLastInterfact;
+    public float timeSinceLastInteract;
+    public Sprite imgSprite;
 
     private void Start()
     {
-        timeSinceLastInterfact = Time.time;
+        timeSinceLastInteract = Time.time;
+        gameObject.name = displayName;
     }
 
     public virtual void Interact()
     {
+        
+    }
+
+    public void Pickup()
+    {
+        InventoryManager.instance.AddItemToHotbar(id);
+        Destroy(gameObject);
     }
 }
