@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, IDamageable
 {
+    public static PlayerManager instance = null;
+
+    public Transform interactArea;
+
     [SerializeField] private int maxHealth = 10;
 
     public int GetHealth { get { return curHealth; } }
     private int curHealth;
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
     void Start()
     {
         curHealth = maxHealth;
     }
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-
-        }
-    }
-
 
     public void RemoveHealth(int amount)
     {

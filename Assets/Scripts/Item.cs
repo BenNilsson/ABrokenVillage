@@ -10,5 +10,16 @@ public class Item : MonoBehaviour
     public bool interactable;
     public int stackSize = 1;
     public bool stackable;
-    public virtual void Interact() { }
+
+    public float interactCd = 1f;
+    public float timeSinceLastInterfact;
+
+    private void Start()
+    {
+        timeSinceLastInterfact = Time.time;
+    }
+
+    public virtual void Interact()
+    {
+    }
 }

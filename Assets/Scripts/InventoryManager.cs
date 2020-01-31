@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance = null;
 
     public int curSelectedSlot;
+    public Item curItem;
 
     [SerializeField] private int slotAmount;
     [SerializeField] private Transform hotbar;
@@ -32,6 +33,23 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
+        // Interact with item
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (curItem != null)
+            {
+                if(curItem.interactable)
+                {
+                    if(Time.time >= curItem.timeSinceLastInterfact + curItem.interactCd)
+                    {
+                        curItem.Interact();
+                        curItem.timeSinceLastInterfact = Time.time;
+                    }
+                }
+            }
+        }
+
+        // Select inventory option
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectInventorySlot(1);
@@ -75,7 +93,9 @@ public class InventoryManager : MonoBehaviour
         hotbarSlots[curSelectedSlot - 1].outline.enabled = false;
         curSelectedSlot = number;
         hotbarSlots[curSelectedSlot - 1].outline.enabled = true;
-        
+        if (hotbarSlots[curSelectedSlot - 1].item != null)
+            curItem = hotbarSlots[curSelectedSlot - 1].item;
+        else curItem = null;
     }
 
     private void AddInventorySlots(int amount)
