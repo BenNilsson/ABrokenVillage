@@ -14,6 +14,14 @@ public class PlayerManager : MonoBehaviour, IDamageable
         curHealth = maxHealth;
     }
 
+    void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+
+        }
+    }
+
 
     public void RemoveHealth(int amount)
     {
