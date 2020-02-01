@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8acf402eeeffd61418bc1da584d22efb, type: 3}
   spriteRenderer: {fileID: 8353045591229660637}
   harvestable: 1
+  soundName: TreeHit1
 --- !u!58 &8353045591229660449
 CircleCollider2D:
   m_ObjectHideFlags: 0

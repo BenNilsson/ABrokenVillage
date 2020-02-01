@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: feecae70c92ad0849b636a0f2b6f50be, type: 3}
   spriteRenderer: {fileID: 9132497222364863653}
   harvestable: 1
+  soundName: BushHit2
 --- !u!58 &6870885941686513129
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Harvest : MonoBehaviour, IHarvestable
     public List<Sprite> sprites = new List<Sprite>();
     public SpriteRenderer spriteRenderer;
     public bool harvestable;
+    public string soundName;
 
     private Sprite randomSprite;
     private int initialHealth;
@@ -31,6 +32,12 @@ public class Harvest : MonoBehaviour, IHarvestable
         if(harvestable)
         {
             health -= amount;
+
+            if (soundName != "")
+            {
+            SoundManager.instance.PlaySound(soundName, 0.25f);          
+            }
+
             if (health <= 0)
                 HarvestItem();
         }

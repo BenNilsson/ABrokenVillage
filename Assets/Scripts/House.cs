@@ -6,7 +6,7 @@ public class House : MonoBehaviour, IRepairable, IDamageable
 {
     public int curHealth;
     public int maxHealth;
-
+    private bool destroyed;
     public float HealthPercentage { get { return (float)curHealth / (float)maxHealth; } }
 
     public List<Sprite> houseStages = new List<Sprite>();
@@ -25,20 +25,31 @@ public class House : MonoBehaviour, IRepairable, IDamageable
 
     public void Repair(int amount)
     {
+        if (curHealth != maxHealth)
+        {
         curHealth += amount;
-
+        SoundManager.instance.PlaySound("RepairHouse", 0.1f);
+        }
         if (curHealth > maxHealth) curHealth = maxHealth;
-
+        destroyed = false;
         FindTexture();
     }
 
     public void TakeDamage(int amount)
     {
+
         curHealth -= amount;
+
+        SoundManager.instance.PlaySound("HouseHit", 0.25f);
 
         if (curHealth <= 0)
             FindTexture();
-            
+        if (curHealth == 0 && !destroyed)
+        {
+            SoundManager.instance.PlaySound("HouseDestroy", 0.25f);
+            destroyed = true;
+        }
+
     }
 
     private void FindTexture()
