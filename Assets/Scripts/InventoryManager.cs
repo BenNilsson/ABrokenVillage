@@ -48,8 +48,8 @@ public class InventoryManager : MonoBehaviour
                 {
                     if(Time.time >= curItem.timeSinceLastInteract + curItem.interactCd)
                     {
-                        curItem.Interact();
                         curItem.timeSinceLastInteract = Time.time;
+                        curItem.Interact();
                     }
                 }
             }
@@ -156,6 +156,81 @@ public class InventoryManager : MonoBehaviour
             obj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
             hotbarSlots.Add(obj.GetComponent<HotbarSlot>());
         } 
+    }
+
+    public bool ContainsItem(int id, int amount)
+    {
+        // First, check if the item requested exists in the database
+        Item item = ItemDataBase.instance.GetItemFromList(id);
+        if (item != null)
+        {
+            // Item exists in database
+            // Search through the hotbar and find the last index of the item
+            for (int i = 0; i < hotbarSlots.Count; i++)
+            {
+                HotbarSlot slot = hotbarSlots[i];
+                if(item == slot.GetItem())
+                {
+                    // Item exists, check if the amount there is the same as requested
+                    if(slot.amount >= amount)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public bool RemoveItemFromHotbar(int id, int amount)
+    {
+        bool deleteItem = false;
+        HotbarSlot slot = null;
+
+        // First, check if the item requested exists in the database
+        Item item = ItemDataBase.instance.GetItemFromList(id);
+        if(item != null)
+        {
+            for(int i = 0; i < hotbarSlots.Count; i++)
+            {
+                // Check if item exists in hotbar
+                HotbarSlot s = hotbarSlots[i];
+                if (s.item == item)
+                {
+                    // Set slot
+                    slot = hotbarSlots[i];
+
+                    // item exists, check if it is stackable
+                    if (s.item.stackable)
+                    {
+                        s.amount -= amount;
+                        if (s.amount <= 0) deleteItem = true;
+                    }else
+                    {
+                        deleteItem = true;
+                    }
+                    break;
+                }
+            }
+
+            if(deleteItem)
+            {
+                slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
+                slot.amount = 0;
+                curItem = null;
+                if (slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
+                slot.item = null;
+                return true;
+            }
+            else
+            {
+                if (slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = slot.amount.ToString();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public bool AddItemToHotbar(int id)

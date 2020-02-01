@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  hitParticle: {fileID: 4182655168644057546, guid: 8433acb1347e2b340a9aa7d3a4c8e26d,
+    type: 3}
 --- !u!58 &8945935115952976437
 CircleCollider2D:
   m_ObjectHideFlags: 0

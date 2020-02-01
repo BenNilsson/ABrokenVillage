@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.43, y: 2.12, z: 0}
   m_LocalScale: {x: 3.9, y: 3.9, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6980453374818891970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,6 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 20
   maxHealth: 20
+  hitParticle: {fileID: 3132763470637959122, guid: 97e7f92a00372644883ecd619c732c15,
+    type: 3}
+  particleSpawnPoint: {fileID: 6980453374818891970}
   houseStages:
   - {fileID: 602028397892777621, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
   - {fileID: 6435485226968105997, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
@@ -127,3 +131,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &8021889212211249086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6980453374818891970}
+  m_Layer: 11
+  m_Name: hitParticleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6980453374818891970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021889212211249086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.821, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4733982115119959721}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hammer : Weapon
 {
     public LayerMask hammerMask;
+    public int repairAmount;
 
     public override void Interact()
     {
@@ -19,7 +20,7 @@ public class Hammer : Weapon
             IRepairable repairable = hit.gameObject.GetComponent<IRepairable>();
             if (repairable != null)
             {
-                repairable.Repair(dmgAmount);
+                repairable.Repair(repairAmount);
             }
             break;
         }

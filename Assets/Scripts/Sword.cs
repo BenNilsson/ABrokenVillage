@@ -10,6 +10,8 @@ public class Sword : Weapon
     {
         base.Interact();
 
+        SoundManager.instance.PlaySound("SwordSwing", 0.25f);
+
         // Get colliders
         Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, swordMask);
 
