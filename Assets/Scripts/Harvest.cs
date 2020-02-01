@@ -31,7 +31,7 @@ public class Harvest : MonoBehaviour, IHarvestable
             Vector2 pos = transform.position;
             pos += Random.insideUnitCircle;
             
-            ItemDataBase.instance.SpawnItem(1, pos);
+            ItemDataBase.instance.SpawnItem(itemToDropPrefab.GetComponent<Item>().id, pos);
         }
     }
 }

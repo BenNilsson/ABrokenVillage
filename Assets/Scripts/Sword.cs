@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : Weapon
+public class Sword : Weapon
 {
-    public LayerMask treeMask;
+    public LayerMask swordMask;
 
     public override void Interact()
     {
         base.Interact();
 
         // Get colliders
-        Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, treeMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, swordMask);
 
         // Damage trees
         foreach (Collider2D hit in hits)

@@ -27,6 +27,7 @@ public class ItemDataBase : MonoBehaviour
         }
 
         SpawnItem(0, new Vector3(2, 0, 0));
+        SpawnItem(2, new Vector3(-2, 0, 0));
     }
 
     public Item GetItemFromList(int id)
@@ -39,7 +40,7 @@ public class ItemDataBase : MonoBehaviour
 
     public void SpawnItem(int id, Vector3 position)
     {
-        Item i = items.Where(obj => obj.id == id).SingleOrDefault();
+        Item i = GetItemFromList(id);
         if (i != null)
         {
             GameObject itemObj = itemObjs.Where(obj => obj.GetComponent<Item>().displayName == i.displayName).SingleOrDefault();
