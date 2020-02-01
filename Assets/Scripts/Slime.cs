@@ -5,11 +5,12 @@ using UnityEngine;
 public class Slime : Enemy, IDamageable
 {
     public GameObject hitParticle;
+    public Animator anim;
 
     public void TakeDamage(int amount)
     {
         SoundManager.instance.PlaySound("PlayerHit4", 1.25f);
-
+        if (anim != null) anim.SetTrigger("Hit");
         health -= amount;
         if (health <= 0) Destroy(gameObject);
         if (hitParticle != null)
