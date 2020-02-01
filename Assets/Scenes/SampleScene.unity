@@ -264,9 +264,10 @@ GameObject:
   - component: {fileID: 539877743}
   - component: {fileID: 539877742}
   - component: {fileID: 539877744}
-  m_Layer: 0
+  - component: {fileID: 539877745}
+  m_Layer: 11
   m_Name: BrownHouse
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,6 +361,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8951002}
   m_EdgeRadius: 0
+--- !u!114 &539877745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539877741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b524ce9e336a6604ab9b8fbfd24b884f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  houseStages:
+  - {fileID: 602028397892777621, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
+  - {fileID: 6435485226968105997, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
+  - {fileID: -6505858168687245031, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
+  - {fileID: 3454449194869755938, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
 --- !u!1001 &1075024210
 PrefabInstance:
   m_ObjectHideFlags: 0
