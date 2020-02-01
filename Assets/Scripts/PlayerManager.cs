@@ -31,21 +31,31 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Ignore colliders from the player
+        if (collision.gameObject.tag == "Player") return;
+
         // Pickup Items
         Item item = collision.gameObject.GetComponent<Item>();
+        collision.gameObject.GetComponent<Collider2D>().enabled = false;
 
         if(item != null)
         {
-            if(InventoryManager.instance.AddItemToHotbar(item.id))
+
+            if (InventoryManager.instance.AddItemToHotbar(item.id))
             {
                 Destroy(item.gameObject);
                 return;
+            }else
+            {
+                collision.gameObject.GetComponent<Collider2D>().enabled = true;
             }
             
         }else
         {
 
         }
+
+        collision.gameObject.GetComponent<Collider2D>().enabled = true;
     }
 
     public void RemoveHealth(int amount)
