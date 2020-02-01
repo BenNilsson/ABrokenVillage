@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
     private void Update()
     {
         // Interact with item
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0))
         {
             if (curItem != null)
             {
