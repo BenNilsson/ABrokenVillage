@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Wood
   interactable: 0
-  stackSize: 4
+  stackSize: 5
   stackable: 1
   id: 1
   interactCd: 1
