@@ -35,7 +35,6 @@ public class EnemyAI : MonoBehaviour
     {
         target = FindClosestHouse();
         InvokeRepeating("UpdatePath", 0f, 0.50f);
-        
     }
 
     public Transform FindClosestHouse()
