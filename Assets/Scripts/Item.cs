@@ -23,7 +23,13 @@ public class Item : MonoBehaviour
 
     public virtual void Interact()
     {
-        
+        if(PlayerManager.instance != null)
+        {
+            if(PlayerManager.instance.anim != null)
+            {
+                PlayerManager.instance.anim.SetTrigger("Swing");
+            }
+        }
     }
 
     public void Pickup()

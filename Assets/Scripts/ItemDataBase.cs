@@ -26,8 +26,7 @@ public class ItemDataBase : MonoBehaviour
             items.Add(item);
         }
 
-        SpawnItem(0, new Vector3(2, 0, 0));
-        SpawnItem(2, new Vector3(-2, 0, 0));
+        
     }
 
     public Item GetItemFromList(int id)
