@@ -19,6 +19,8 @@ public class InventoryManager : MonoBehaviour
 
     public List<HotbarSlot> hotbarSlots = new List<HotbarSlot>();
 
+    [SerializeField] private Transform dropArea;
+
     private void Awake()
     {
         if (instance == null)
@@ -112,15 +114,16 @@ public class InventoryManager : MonoBehaviour
         if(i != null)
         {
             int itemAmount = slot.amount;
+            
+
             for (int j = 0; j < itemAmount; j++)
             {
-                Vector2 pos = PlayerManager.instance.gameObject.transform.position;
-                pos.x += 1.5f;
-                ItemDataBase.instance.SpawnItem(slot.item.id, pos);
+                ItemDataBase.instance.SpawnItem(slot.item.id, dropArea.position);
             }
 
             slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
             slot.amount = 0;
+            curItem = null;
             if (slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
             slot.item = null;
         }
@@ -197,6 +200,14 @@ public class InventoryManager : MonoBehaviour
                 slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
                 slot.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = item.imgSprite;
                 if(slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = slot.amount.ToString();
+
+                // Check if the current slot selectedis the same as the one the item was added to
+                if(slot == hotbarSlots[curSelectedSlot - 1])
+                {
+                    // Re-select the slot
+                    SelectInventorySlot(curSelectedSlot);
+                }
+
                 return true;
             }
         }

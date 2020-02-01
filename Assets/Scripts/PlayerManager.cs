@@ -38,11 +38,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             if(InventoryManager.instance.AddItemToHotbar(item.id))
             {
-                
                 Destroy(item.gameObject);
                 return;
             }
             
+        }else
+        {
+
         }
     }
 
