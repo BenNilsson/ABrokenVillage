@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b2aba219a9d12c4b83eb7094b9ea26e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   id: 3
   interactCd: 0.5
   timeSinceLastInteract: 35.978172
-  imgSprite: {fileID: 21300000, guid: 6b2aba219a9d12c4b83eb7094b9ea26e, type: 3}
+  imgSprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
   enemies:
     serializedVersion: 2
     m_Bits: 1024
