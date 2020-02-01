@@ -115,8 +115,8 @@ MonoBehaviour:
   stackSize: 1
   stackable: 0
   id: 3
-  interactCd: 1
-  timeSinceLastInteract: 5.0234795
+  interactCd: 0.8
+  timeSinceLastInteract: 57.253956
   imgSprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
   enemies:
     serializedVersion: 2
@@ -126,3 +126,4 @@ MonoBehaviour:
   hammerMask:
     serializedVersion: 2
     m_Bits: 2048
+  repairAmount: 5
