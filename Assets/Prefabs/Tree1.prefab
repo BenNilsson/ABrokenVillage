@@ -99,6 +99,15 @@ MonoBehaviour:
   amountToDrop: {x: 2, y: 4}
   itemToDropPrefab: {fileID: 3546132844632173843, guid: 0bf8a08d1aa5b8d4bb6dba2fba24c32f,
     type: 3}
+  respawnTime: {x: 15, y: 20}
+  sprites:
+  - {fileID: 21300000, guid: e4af79492aa04ad4cbed072b07478555, type: 3}
+  - {fileID: 21300000, guid: d10b825409458284d9332e40359d1592, type: 3}
+  - {fileID: 21300000, guid: c9a1a1036aeab8549a2a6f74d946c416, type: 3}
+  - {fileID: 21300000, guid: a3988dd7b58b5204b8112796f888ddc5, type: 3}
+  - {fileID: 21300000, guid: 8acf402eeeffd61418bc1da584d22efb, type: 3}
+  spriteRenderer: {fileID: 8353045591229660637}
+  harvestable: 1
 --- !u!58 &8353045591229660449
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -182,6 +191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5528186265842786052, guid: b403a553e057f904584d1d16c44e13aa,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5528186265842786055, guid: b403a553e057f904584d1d16c44e13aa,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -197,10 +211,10 @@ PrefabInstance:
       propertyPath: ShapeModule.type
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5528186265842786052, guid: b403a553e057f904584d1d16c44e13aa,
+    - target: {fileID: 5528186265842786055, guid: b403a553e057f904584d1d16c44e13aa,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b403a553e057f904584d1d16c44e13aa, type: 3}

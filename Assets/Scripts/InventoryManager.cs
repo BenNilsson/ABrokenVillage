@@ -33,10 +33,6 @@ public class InventoryManager : MonoBehaviour
     {
         AddInventorySlots(slotAmount);
 
-        AddItemToHotbar(2);
-        AddItemToHotbar(0);
-        AddItemToHotbar(3);
-
         curSelectedSlot = 1;
         SelectInventorySlot(1);
     }

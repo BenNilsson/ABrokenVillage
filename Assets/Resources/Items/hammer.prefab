@@ -116,12 +116,12 @@ MonoBehaviour:
   stackable: 0
   id: 3
   interactCd: 1
-  timeSinceLastInteract: 5.1990905
+  timeSinceLastInteract: 5.0234795
   imgSprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
   enemies:
     serializedVersion: 2
     m_Bits: 1024
-  attackRange: 1
+  attackRange: 0.5
   dmgAmount: 1
   hammerMask:
     serializedVersion: 2
