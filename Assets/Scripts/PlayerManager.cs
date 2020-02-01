@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public static PlayerManager instance = null;
 
     public Transform interactArea;
+    public Animator anim;
 
     [SerializeField] private int maxHealth = 10;
 
@@ -19,6 +20,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -36,8 +39,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
             if(InventoryManager.instance.AddItemToHotbar(item.id))
             {
                 Destroy(item.gameObject);
+                return;
             }
             
+        }else
+        {
+
         }
     }
 

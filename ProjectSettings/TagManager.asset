@@ -44,3 +44,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 558612599
+    locked: 0
+  - name: TileMap
+    uniqueID: 3234735615
+    locked: 0
+  - name: Details
+    uniqueID: 1896445179
+    locked: 0
+  - name: Houses
+    uniqueID: 4131166855
+    locked: 0
+  - name: Enemies
+    uniqueID: 2371905419
+    locked: 0
+  - name: Player
+    uniqueID: 3343949145
+    locked: 0
+  - name: Forground
+    uniqueID: 16784673
+    locked: 0

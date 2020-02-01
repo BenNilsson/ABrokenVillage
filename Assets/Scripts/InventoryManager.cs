@@ -15,8 +15,11 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private int slotAmount;
     [SerializeField] private Transform hotbar;
     [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private TextMeshProUGUI toolTipTxt;
 
     public List<HotbarSlot> hotbarSlots = new List<HotbarSlot>();
+
+    [SerializeField] private Transform dropArea;
 
     private void Awake()
     {
@@ -29,6 +32,11 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         AddInventorySlots(slotAmount);
+
+        AddItemToHotbar(2);
+        AddItemToHotbar(0);
+        AddItemToHotbar(3);
+
         curSelectedSlot = 1;
         SelectInventorySlot(1);
     }
@@ -55,6 +63,8 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             DropSelectedItem();
+            StopAllCoroutines();
+            StartCoroutine(DisplayToolText());
         }
 
         // Select inventory option
@@ -104,15 +114,16 @@ public class InventoryManager : MonoBehaviour
         if(i != null)
         {
             int itemAmount = slot.amount;
+            
+
             for (int j = 0; j < itemAmount; j++)
             {
-                Vector2 pos = PlayerManager.instance.gameObject.transform.position;
-                pos.x += 1.5f;
-                ItemDataBase.instance.SpawnItem(slot.item.id, pos);
+                ItemDataBase.instance.SpawnItem(slot.item.id, dropArea.position);
             }
 
             slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
             slot.amount = 0;
+            curItem = null;
             if (slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
             slot.item = null;
         }
@@ -126,12 +137,18 @@ public class InventoryManager : MonoBehaviour
         if (hotbarSlots[curSelectedSlot - 1].item != null)
         {
             curItem = hotbarSlots[curSelectedSlot - 1].item;
-            if(curItem.interactable)
+            if (curItem.interactable)
             {
                 curItem.timeSinceLastInteract = Time.time;
             }
         }
-        else curItem = null;
+        else
+        {
+            curItem = null;
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(DisplayToolText());
     }
 
     private void AddInventorySlots(int amount)
@@ -183,6 +200,14 @@ public class InventoryManager : MonoBehaviour
                 slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = true;
                 slot.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = item.imgSprite;
                 if(slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = slot.amount.ToString();
+
+                // Check if the current slot selectedis the same as the one the item was added to
+                if(slot == hotbarSlots[curSelectedSlot - 1])
+                {
+                    // Re-select the slot
+                    SelectInventorySlot(curSelectedSlot);
+                }
+
                 return true;
             }
         }
@@ -199,6 +224,20 @@ public class InventoryManager : MonoBehaviour
         else
         {
             return hotbarSlots[number];
+        }
+    }
+
+    public IEnumerator DisplayToolText()
+    {
+        Item i = hotbarSlots[curSelectedSlot - 1].item;
+        if (i != null)
+        {
+            toolTipTxt.text = hotbarSlots[curSelectedSlot - 1].item.displayName;
+            yield return new WaitForSeconds(3f);
+            toolTipTxt.text = "";
+        }else
+        {
+            toolTipTxt.text = "";
         }
     }
 

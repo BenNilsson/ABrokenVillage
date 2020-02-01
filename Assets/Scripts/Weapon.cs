@@ -10,6 +10,9 @@ public class Weapon : Item
 
     public override void Interact()
     {
+        // Base Interact
+        base.Interact();
+
         // Get enemies
         Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, enemies);
 
@@ -17,7 +20,7 @@ public class Weapon : Item
         foreach(Collider2D enemy in hits)
         {
             IDamageable damageable = enemy.gameObject.GetComponent<IDamageable>();
-            if(damageable != null)
+            if(damageable != null && enemy.gameObject.tag != "House")
             {
                 damageable.TakeDamage(dmgAmount);
             }
