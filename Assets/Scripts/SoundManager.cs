@@ -24,9 +24,10 @@ public class SoundManager : MonoBehaviour
     public AudioMixerGroup SFXMixer;
     private string currentTrack;
     public AudioSource backgroundMusic;
+    public float musicVol;
     private void Start()
     {
-        PlayMusic("BackgroundMusic", 0.5f);
+        PlayMusic("BackgroundMusic", musicVol);
     }
     public void PlaySound(string name, float volume)
     {
