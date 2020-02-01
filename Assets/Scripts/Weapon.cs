@@ -11,12 +11,12 @@ public class Weapon : Item
     public override void Interact()
     {
         // Get enemies
-        Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, enemies);
 
         // Damage enemies
         foreach(Collider2D enemy in hits)
         {
-            IDamageable damageable = GetComponent<IDamageable>();
+            IDamageable damageable = enemy.gameObject.GetComponent<IDamageable>();
             if(damageable != null)
             {
                 damageable.TakeDamage(dmgAmount);

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3181070077489897744
+--- !u!1 &6868263848023519835
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9174992734844738078}
-  - component: {fileID: 5309297657256824173}
-  - component: {fileID: 1492662913447991521}
-  - component: {fileID: 5353585964213115499}
+  - component: {fileID: 874130104434051413}
+  - component: {fileID: 4241262628735475238}
+  - component: {fileID: 7476704322311818154}
+  - component: {fileID: 5937021690486934844}
   m_Layer: 0
-  m_Name: sword
+  m_Name: grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9174992734844738078
+--- !u!4 &874130104434051413
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181070077489897744}
+  m_GameObject: {fileID: 6868263848023519835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.056, y: 0, z: 0}
+  m_LocalPosition: {x: -1.4909042, y: -1.4424477, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5309297657256824173
+--- !u!212 &4241262628735475238
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181070077489897744}
+  m_GameObject: {fileID: 6868263848023519835}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5ec6b14025a4e64c90fe24accb59be1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79eabc0e6918a0a488427aceef08c88c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,13 +82,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1492662913447991521
+--- !u!58 &7476704322311818154
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181070077489897744}
+  m_GameObject: {fileID: 6868263848023519835}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -98,31 +98,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5353585964213115499
+--- !u!114 &5937021690486934844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3181070077489897744}
+  m_GameObject: {fileID: 6868263848023519835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a614d660d2c33604daaff8c2f80cec72, type: 3}
+  m_Script: {fileID: 11500000, guid: ef51c87653eb77943bcdb6eaa0fa2db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Sword
-  interactable: 1
-  stackSize: 1
-  stackable: 0
-  id: 2
-  interactCd: 0.5
+  displayName: Grass
+  interactable: 0
+  stackSize: 16
+  stackable: 1
+  id: 4
+  interactCd: 1
   timeSinceLastInteract: 0
-  imgSprite: {fileID: 21300000, guid: b5ec6b14025a4e64c90fe24accb59be1, type: 3}
-  enemies:
-    serializedVersion: 2
-    m_Bits: 1024
-  attackRange: 1
-  dmgAmount: 1
-  swordMask:
-    serializedVersion: 2
-    m_Bits: 512
+  imgSprite: {fileID: 21300000, guid: 79eabc0e6918a0a488427aceef08c88c, type: 3}
