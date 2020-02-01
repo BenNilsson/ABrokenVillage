@@ -6,7 +6,8 @@ public class House : MonoBehaviour, IRepairable, IDamageable
 {
     public int curHealth;
     public int maxHealth;
-    private bool destroyed;
+    public bool destroyed;
+    public bool repairable;
     public GameObject hitParticle;
     public Transform particleSpawnPoint;
     public float HealthPercentage { get { return (float)curHealth / (float)maxHealth; } }
@@ -23,10 +24,12 @@ public class House : MonoBehaviour, IRepairable, IDamageable
     private void Start()
     {
         FindTexture();
+        repairable = true;
     }
 
     public void Repair(int amount)
     {
+        if (!repairable) return;
         if (curHealth != maxHealth)
         {
 
@@ -41,6 +44,7 @@ public class House : MonoBehaviour, IRepairable, IDamageable
                         if (InventoryManager.instance.RemoveItemFromHotbar(4, 2))
                         {
                             curHealth += amount;
+                            destroyed = false;
                             SoundManager.instance.PlaySound("RepairHouse", 0.1f);
                             if (curHealth > maxHealth) curHealth = maxHealth;
                             FindTexture();
