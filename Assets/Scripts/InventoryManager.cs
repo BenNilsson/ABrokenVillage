@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private int slotAmount;
     [SerializeField] private Transform hotbar;
     [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private TextMeshProUGUI toolTipTxt;
 
     public List<HotbarSlot> hotbarSlots = new List<HotbarSlot>();
 
@@ -60,6 +61,8 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             DropSelectedItem();
+            StopAllCoroutines();
+            StartCoroutine(DisplayToolText());
         }
 
         // Select inventory option
@@ -131,12 +134,18 @@ public class InventoryManager : MonoBehaviour
         if (hotbarSlots[curSelectedSlot - 1].item != null)
         {
             curItem = hotbarSlots[curSelectedSlot - 1].item;
-            if(curItem.interactable)
+            if (curItem.interactable)
             {
                 curItem.timeSinceLastInteract = Time.time;
             }
         }
-        else curItem = null;
+        else
+        {
+            curItem = null;
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(DisplayToolText());
     }
 
     private void AddInventorySlots(int amount)
@@ -204,6 +213,20 @@ public class InventoryManager : MonoBehaviour
         else
         {
             return hotbarSlots[number];
+        }
+    }
+
+    public IEnumerator DisplayToolText()
+    {
+        Item i = hotbarSlots[curSelectedSlot - 1].item;
+        if (i != null)
+        {
+            toolTipTxt.text = hotbarSlots[curSelectedSlot - 1].item.displayName;
+            yield return new WaitForSeconds(3f);
+            toolTipTxt.text = "";
+        }else
+        {
+            toolTipTxt.text = "";
         }
     }
 
