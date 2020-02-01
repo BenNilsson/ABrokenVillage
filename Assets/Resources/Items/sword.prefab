@@ -116,12 +116,12 @@ MonoBehaviour:
   stackable: 0
   id: 2
   interactCd: 0.5
-  timeSinceLastInteract: 56.579853
+  timeSinceLastInteract: 17.392498
   imgSprite: {fileID: 21300000, guid: 6b4fb21d52cd5f94d8382e24e5551ab3, type: 3}
   enemies:
     serializedVersion: 2
     m_Bits: 1024
-  attackRange: 1
+  attackRange: 0.5
   dmgAmount: 1
   swordMask:
     serializedVersion: 2

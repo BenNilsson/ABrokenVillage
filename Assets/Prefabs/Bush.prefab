@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9132497221876521719}
-  - component: {fileID: 9132497221876521712}
   - component: {fileID: 993813217}
   - component: {fileID: 6870885941686513129}
   m_Layer: 9
@@ -34,24 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9132497221876521712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9132497221876521713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ab39ff3add4e14f9ac3af3171bc519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 05b882538f5218e439827955c8c7341c, type: 3}
-  - {fileID: 21300000, guid: 79eabc0e6918a0a488427aceef08c88c, type: 3}
-  - {fileID: 21300000, guid: 9bc289e1096026440a37dbb552c94a41, type: 3}
-  - {fileID: 21300000, guid: feecae70c92ad0849b636a0f2b6f50be, type: 3}
-  rend: {fileID: 9132497222364863653}
 --- !u!114 &993813217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,9 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  amountToDrop: {x: 2, y: 5}
+  amountToDrop: {x: 2, y: 4}
   itemToDropPrefab: {fileID: 6868263848023519835, guid: 4522c35c199dd6a40bb36dd061ec6ffa,
     type: 3}
+  respawnTime: {x: 10, y: 15}
+  sprites:
+  - {fileID: 21300000, guid: ee97b62bb0cf0f244b36c24d25766ee4, type: 3}
+  - {fileID: 21300000, guid: 05b882538f5218e439827955c8c7341c, type: 3}
+  - {fileID: 21300000, guid: 79eabc0e6918a0a488427aceef08c88c, type: 3}
+  - {fileID: 21300000, guid: 9bc289e1096026440a37dbb552c94a41, type: 3}
+  - {fileID: 21300000, guid: feecae70c92ad0849b636a0f2b6f50be, type: 3}
+  spriteRenderer: {fileID: 9132497222364863653}
+  harvestable: 1
 --- !u!58 &6870885941686513129
 CircleCollider2D:
   m_ObjectHideFlags: 0
