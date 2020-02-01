@@ -98,7 +98,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.0016214252}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b524ce9e336a6604ab9b8fbfd24b884f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  curHealth: 5
+  maxHealth: 20
   houseStages:
   - {fileID: 602028397892777621, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}
   - {fileID: 6435485226968105997, guid: 625f2489bfff3434982fa3ba6b12668b, type: 3}

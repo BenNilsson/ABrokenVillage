@@ -20,7 +20,7 @@ public class Weapon : Item
         foreach(Collider2D enemy in hits)
         {
             IDamageable damageable = enemy.gameObject.GetComponent<IDamageable>();
-            if(damageable != null)
+            if(damageable != null && enemy.gameObject.tag != "House")
             {
                 damageable.TakeDamage(dmgAmount);
             }

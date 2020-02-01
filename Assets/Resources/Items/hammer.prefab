@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5324556251898582200}
   - component: {fileID: 9160016949972730827}
-  - component: {fileID: 7566120251608396093}
   - component: {fileID: 2452071417051764295}
+  - component: {fileID: 7844083050425864000}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -82,34 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7566120251608396093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915699540541648822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b53c995f7217b409b5331f9c92cb78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Hammer
-  interactable: 1
-  stackSize: 1
-  stackable: 0
-  id: 3
-  interactCd: 0.5
-  timeSinceLastInteract: 35.978172
-  imgSprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
-  enemies:
-    serializedVersion: 2
-    m_Bits: 1024
-  attackRange: 0.75
-  dmgAmount: 1
-  treeMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!58 &2452071417051764295
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +98,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7844083050425864000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915699540541648822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddaaadef71237c43886f20177e1e0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Hammer
+  interactable: 1
+  stackSize: 1
+  stackable: 0
+  id: 3
+  interactCd: 1
+  timeSinceLastInteract: 5.1990905
+  imgSprite: {fileID: 21300000, guid: df376bb7b60a89f48b61b2cba55891e7, type: 3}
+  enemies:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackRange: 1
+  dmgAmount: 1
+  hammerMask:
+    serializedVersion: 2
+    m_Bits: 2048

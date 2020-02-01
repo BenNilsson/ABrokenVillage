@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class House : MonoBehaviour, IRepairable, IDamageable
 {
-    public int health;
-    private int maxHealth;
+    public int curHealth;
+    public int maxHealth;
+
+    public float HealthPercentage { get { return (float)curHealth / (float)maxHealth; } }
 
     public List<Sprite> houseStages = new List<Sprite>();
 
@@ -18,31 +20,40 @@ public class House : MonoBehaviour, IRepairable, IDamageable
 
     private void Start()
     {
-        maxHealth = health;
+        FindTexture();
     }
 
     public void Repair(int amount)
     {
-        health += amount;
-        Mathf.Clamp(health, 0, maxHealth);
+        curHealth += amount;
+
+        if (curHealth > maxHealth) curHealth = maxHealth;
+
+        FindTexture();
     }
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        curHealth -= amount;
 
-        int healthPercentage = health / 20;
-        if(healthPercentage >= 0.75)
+        if (curHealth <= 0)
+            FindTexture();
+            
+    }
+
+    private void FindTexture()
+    {
+        if (HealthPercentage > 0.75)
         {
             // House is above 75% health
             spriteRenderer.sprite = houseStages[0];
         }
-        else if (healthPercentage >= 0.50)
+        else if (HealthPercentage > 0.50)
         {
             // House is above 50% health
             spriteRenderer.sprite = houseStages[1];
         }
-        else if (healthPercentage >= 0.25)
+        else if (HealthPercentage > 0.25)
         {
             // House is above 25% health
             spriteRenderer.sprite = houseStages[2];
@@ -52,8 +63,5 @@ public class House : MonoBehaviour, IRepairable, IDamageable
             // House is below 25% health
             spriteRenderer.sprite = houseStages[3];
         }
-
-        if (health <= 0)
-            Destroy(gameObject);
     }
 }

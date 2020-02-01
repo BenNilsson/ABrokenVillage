@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &5533728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4533606684443338677, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4533606683750204001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &11512266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8353045591229660636, guid: 7451a4942c1eb79448abadc1cf163dfa,
@@ -389,6 +395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 568073962, guid: 716ceda98cb40074c9607de08f0fcf9e, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 5533728}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 716ceda98cb40074c9607de08f0fcf9e, type: 3}
 --- !u!1001 &1924745452
@@ -678,6 +688,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3509200503918475123, guid: 19bf260135c39474fb04667d49d57922,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509200503918475123, guid: 19bf260135c39474fb04667d49d57922,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19bf260135c39474fb04667d49d57922, type: 3}
 --- !u!1001 &4533606683750204001
@@ -746,26 +766,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533606684443338674, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -951018151
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533606684443338674, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533606684443338679, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.05846399
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533606684443338679, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.849664
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b3c72eb7aea6f4ba6f781c0f199ff1, type: 3}
