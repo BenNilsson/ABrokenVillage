@@ -10,6 +10,8 @@ public class Sword : Weapon
     {
         base.Interact();
 
+        if (PlayerManager.instance == null) return;
+
         SoundManager.instance.PlaySound("SwordSwing", 0.25f);
 
         // Get colliders

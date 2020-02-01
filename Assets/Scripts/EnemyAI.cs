@@ -39,23 +39,36 @@ public class EnemyAI : MonoBehaviour
 
     public Transform FindClosestHouse()
     {
-        Transform closestHouse = EnemyManager.instance.houses[0].transform;
-        float distance = Vector2.Distance(transform.position, EnemyManager.instance.houses[0].transform.position);
-        for (int i = 1; i < EnemyManager.instance.houses.Count; i++)
+        Transform closestHouse = new GameObject().transform;
+        float distance = Mathf.Infinity;
+        for (int i = 0; i < EnemyManager.instance.houses.Count; i++)
         {
+            if (EnemyManager.instance.houses[i].GetComponent<House>().destroyed == true) continue;
             if (distance > Vector2.Distance(transform.position, EnemyManager.instance.houses[i].transform.position))
             {
                 closestHouse = EnemyManager.instance.houses[i].transform;
                 distance = Vector2.Distance(transform.position, EnemyManager.instance.houses[i].transform.position);
             }
         }
-
+        if(PlayerManager.instance != null)
+            if (distance == Mathf.Infinity) closestHouse = PlayerManager.instance.transform;
         return closestHouse;
     }
 
     void UpdatePath()
     {
-        if(seeker.IsDone())
+        if (target == null) return;
+
+        House house = target.gameObject.GetComponent<House>();
+        if(house != null)
+        {
+            if(house.destroyed)
+                target = FindClosestHouse();
+
+        }else if (PlayerManager.instance != null && target == PlayerManager.instance.transform)
+            target = FindClosestHouse();
+
+        if (seeker.IsDone())
             seeker.StartPath(rb2d.position, target.position, OnPathCompleted);
     }
 
@@ -71,6 +84,8 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         // Check if the slime is close enough
+        if (target == null) return;
+
         if(Vector2.Distance(transform.position, target.position) <= attackMinDistance)
         {
             // Check if he can attack

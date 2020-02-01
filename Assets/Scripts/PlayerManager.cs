@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public Transform interactArea;
     public Animator anim;
 
+    public bool isAlive = true;
+
     [SerializeField] private int maxHealth = 10;
 
     public int GetHealth { get { return curHealth; } }
@@ -27,6 +29,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
     void Start()
     {
         curHealth = maxHealth;
+        isAlive = true;
+    }
+
+    void Update()
+    {
+        if (!isAlive)
+            gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,7 +71,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void RemoveHealth(int amount)
     {
         curHealth -= amount;
-        if (curHealth <= 0) Destroy(gameObject);
+        if (curHealth <= 0) isAlive = false;
     }
 
     public void TakeDamage(int amount)
