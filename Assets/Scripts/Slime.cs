@@ -10,7 +10,7 @@ public class Slime : Enemy, IDamageable
 
     public void TakeDamage(int amount)
     {
-        Debug.Log("OUCH");
+        SoundManager.instance.PlaySound("PlayerHit4", 1.25f);
         health -= amount;
         if (health <= 0) Destroy(gameObject);
     }

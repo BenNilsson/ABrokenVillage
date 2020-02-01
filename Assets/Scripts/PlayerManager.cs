@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
             if (InventoryManager.instance.AddItemToHotbar(item.id))
             {
+                SoundManager.instance.PlaySound("Pickup", 0.25f);
                 Destroy(item.gameObject);
                 return;
             }else
