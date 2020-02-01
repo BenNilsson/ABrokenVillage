@@ -26,9 +26,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource backgroundMusic;
     private void Start()
     {
-        PlayMusic("BackgroundMusic");
+        PlayMusic("BackgroundMusic", 0.5f);
     }
-    public void PlaySound(string name, float volume = 0.5f)
+    public void PlaySound(string name, float volume)
     {
         AudioSource SFX = (GameObject.Instantiate(Resources.Load("sfx/AudioSource")) as GameObject).GetComponent<AudioSource>();
         SFX.clip = (AudioClip)Resources.Load("sfx/" + name);
@@ -36,7 +36,16 @@ public class SoundManager : MonoBehaviour
         SFX.volume = volume;
         SFX.Play();
     }
-    public void PlayMusic(string trackName, float volume = 0.5f)
+    public void PlaySoundRandomPitch(string name, float volume, float pitch1, float pitch2)
+    {
+        AudioSource SFX = (GameObject.Instantiate(Resources.Load("sfx/AudioSource")) as GameObject).GetComponent<AudioSource>();
+        SFX.clip = (AudioClip)Resources.Load("sfx/" + name);
+        SFX.outputAudioMixerGroup = SFXMixer;
+        SFX.volume = volume;
+        SFX.pitch = (Random.Range(pitch1, pitch2));
+        SFX.Play();
+    }
+    public void PlayMusic(string trackName, float volume)
     {
         if (instance.currentTrack == trackName)
         {
