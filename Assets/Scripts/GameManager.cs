@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject inventoryMenu;
     public Transform houseParent;
 
     public List<House> houses = new List<House>();
@@ -19,7 +22,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
+    private void OnEnable()
     {
         AddHousesToList();
     }
@@ -27,6 +30,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckHouseRepairable();
+        
+        if(!PlayerManager.instance.isAlive)
+        {
+            // Enable some form of death menu
+            deathMenu.SetActive(true);
+            inventoryMenu.SetActive(false);
+        }
     }
 
     private void CheckHouseRepairable()
@@ -37,6 +47,12 @@ public class GameManager : MonoBehaviour
                 return;
         }
 
+        // End The Game
+        EndGame();
+    }
+
+    private void EndGame()
+    {
         // All code execuded, assume all houses are destroyed
         foreach (House house in houses)
         {
@@ -58,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("Pls tell dev to implement");
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5ed1699f087524fa2ee2528cc0503e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
+  deathMenu: {fileID: 0}
+  inventoryMenu: {fileID: 0}
+  houseParent: {fileID: 0}
   houses: []

@@ -8,6 +8,8 @@ public class Axe : Weapon
 
     public override void Interact()
     {
+        if (!PlayerManager.instance.isAlive) return;
+
         base.Interact();
 
         // Get colliders

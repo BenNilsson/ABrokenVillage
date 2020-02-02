@@ -74,6 +74,8 @@ public class House : MonoBehaviour, IRepairable, IDamageable
 
     public void TakeDamage(int amount)
     {
+        if (!PlayerManager.instance.isAlive) return;
+
         curHealth -= amount;
 
         SoundManager.instance.PlaySound("HouseHit", 0.25f);

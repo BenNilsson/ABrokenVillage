@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,12 +21,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
+        if (!PlayerManager.instance.isAlive) return;
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        if(anim != null)
+        if (anim != null)
         {
-            if(movement != Vector2.zero)
+            if (movement != Vector2.zero)
             {
                 anim.SetBool("Walking", true);
             }
@@ -35,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(movement != Vector2.zero)
+        if (movement != Vector2.zero)
         {
             if (movement.x >= 0)
             {

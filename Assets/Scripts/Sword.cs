@@ -8,9 +8,9 @@ public class Sword : Weapon
 
     public override void Interact()
     {
-        base.Interact();
+        if (!PlayerManager.instance.isAlive) return;
 
-        if (PlayerManager.instance == null) return;
+        base.Interact();
 
         SoundManager.instance.PlaySound("SwordSwing", 0.25f);
 

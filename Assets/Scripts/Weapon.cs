@@ -10,11 +10,12 @@ public class Weapon : Item
 
     public override void Interact()
     {
+        if (!PlayerManager.instance.isAlive) return;
+
         // Base Interact
         base.Interact();
 
         // Get enemies
-        if (PlayerManager.instance == null) return;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(PlayerManager.instance.interactArea.position, attackRange, enemies);
 

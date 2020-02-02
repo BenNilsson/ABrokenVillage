@@ -32,25 +32,28 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        // Ignore anything until 10 seconds has elapsed
-        if(Time.time >= timeWhenLevelLoaded + 10)
+        if(PlayerManager.instance.isAlive)
         {
-            if (Time.time > timeSinceLastCheck + spawnIntervalCheck)
+            // Ignore anything until 10 seconds has elapsed
+            if (Time.time >= timeWhenLevelLoaded + 10)
             {
-                timeSinceLastCheck = Time.time;
-                if (CheckForMobSpawn())
+                if (Time.time > timeSinceLastCheck + spawnIntervalCheck)
                 {
-                    // Check if spawn points are set up
-                    if (spawnPoints.Count != 0)
+                    timeSinceLastCheck = Time.time;
+                    if (CheckForMobSpawn())
                     {
-                        // Get random spawn point
-                        int spawnPoint = Random.Range(0, spawnPoints.Count);
-                        // Get random enemy
-                        int enemy = Random.Range(0, enemiesToSpawn.Count);
+                        // Check if spawn points are set up
+                        if (spawnPoints.Count != 0)
+                        {
+                            // Get random spawn point
+                            int spawnPoint = Random.Range(0, spawnPoints.Count);
+                            // Get random enemy
+                            int enemy = Random.Range(0, enemiesToSpawn.Count);
 
-                        // Spawn enemy
-                        SpawnEnemy(enemy, spawnPoints[spawnPoint].position);
+                            // Spawn enemy
+                            SpawnEnemy(enemy, spawnPoints[spawnPoint].position);
 
+                        }
                     }
                 }
             }
