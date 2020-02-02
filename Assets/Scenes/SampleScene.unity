@@ -1253,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 7575806490889072566, guid: 17a1420567786924aba16be2c08d8609,
         type: 3}
       propertyPath: musicVol
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17a1420567786924aba16be2c08d8609, type: 3}
