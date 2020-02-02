@@ -12,12 +12,20 @@ public class Harvest : MonoBehaviour, IHarvestable
     public SpriteRenderer spriteRenderer;
     public bool harvestable;
     public string soundName;
+    public ParticleSystem hitparticle;
 
     private Sprite randomSprite;
     private int initialHealth;
 
     private float timeElapsed;
     private float randomRespawnTime;
+
+    private ParticleSystem ps;
+
+    void Awake()
+    {
+        ps = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+    }
 
     void Start()
     {
@@ -38,6 +46,9 @@ public class Harvest : MonoBehaviour, IHarvestable
             SoundManager.instance.PlaySound(soundName, 0.25f);          
             }
 
+            if (hitparticle != null)
+                hitparticle.Play();
+
             if (health <= 0)
                 HarvestItem();
         }
@@ -49,6 +60,7 @@ public class Harvest : MonoBehaviour, IHarvestable
         {
             timeElapsed = Time.time;
             harvestable = true;
+            if (ps != null) ps.Play();
             GetComponent<Collider2D>().enabled = true;
             spriteRenderer.sprite = randomSprite;
             health = initialHealth;
@@ -60,6 +72,7 @@ public class Harvest : MonoBehaviour, IHarvestable
         DropItem();
         harvestable = false;
         GetComponent<Collider2D>().enabled = false;
+        if (ps != null) ps.Stop();
         spriteRenderer.sprite = sprites[0];
         timeElapsed = Time.time;
     }

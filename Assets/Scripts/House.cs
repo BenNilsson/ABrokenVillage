@@ -45,11 +45,9 @@ public class House : MonoBehaviour, IRepairable, IDamageable
                         if (InventoryManager.instance.RemoveItemFromHotbar(4, 2))
                         {
                             curHealth += amount;
-                            destroyed = false;
                             SoundManager.instance.PlaySound("RepairHouse", 0.1f);
                             if (curHealth > maxHealth) curHealth = maxHealth;
                             FindTexture();
-                            destroyed = false;
                         }
                         else
                         {
@@ -63,12 +61,12 @@ public class House : MonoBehaviour, IRepairable, IDamageable
                 }
                 else
                 {
-                    Debug.Log("Not enough grass");
+                    InventoryManager.instance.DisplayTip("Not enough grass");
                 }
             }
             else
             {
-                Debug.Log("Not enough wood");
+                InventoryManager.instance.DisplayTip("Not enough wood");
             }
         }
     }
@@ -123,8 +121,9 @@ public class House : MonoBehaviour, IRepairable, IDamageable
         }
         else if (HealthPercentage <= 0)
         {
-            // House is below 25% health
+            // House is at 0 health
             spriteRenderer.sprite = houseStages[3];
+            repairable = false;
         }
     }
 }

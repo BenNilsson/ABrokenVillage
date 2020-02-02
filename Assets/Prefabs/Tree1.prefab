@@ -52,12 +52,13 @@ MonoBehaviour:
     type: 3}
   respawnTime: {x: 60, y: 80}
   sprites:
-  - {fileID: 21300000, guid: e4af79492aa04ad4cbed072b07478555, type: 3}
+  - {fileID: 21300000, guid: de184ecc8c1ab3a49838d2ef70bf3a02, type: 3}
   - {fileID: 21300000, guid: 214e9db9e7a7e2a49bb04191a7504091, type: 3}
   - {fileID: 21300000, guid: 47def08abec3b4b42b15149eae7fe24a, type: 3}
   spriteRenderer: {fileID: 3559257159537174198}
   harvestable: 1
   soundName: TreeHit1
+  hitparticle: {fileID: 0}
 --- !u!58 &31378462099437142
 CircleCollider2D:
   m_ObjectHideFlags: 0

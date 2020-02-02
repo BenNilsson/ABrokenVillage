@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject wonMenu;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TextMeshProUGUI timer;
     public Transform houseParent;
 
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour
         AddHousesToList();
         timeSinceLevelLoaded = Time.deltaTime;
         wonMenu.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -44,7 +48,15 @@ public class GameManager : MonoBehaviour
         if(CheckWin())
         {
             Time.timeScale = 0;
+            inventoryMenu.SetActive(false);
+            timer.text = "";
             if (wonMenu.activeSelf == false) wonMenu.SetActive(true);
+            Cursor.visible = true;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
 
         CheckHouseRepairable();
@@ -57,9 +69,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PauseGame()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        deathMenu.SetActive(false);
+        inventoryMenu.SetActive(false);
+    }
+
+    public void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+        inventoryMenu.SetActive(true);
+        UpdateTimer();
+        pauseMenu.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private bool CheckWin()
     {
-        if (timeSinceLevelLoaded >= 10)
+        if (timeSinceLevelLoaded >= 300)
         {
             return true;
         }
@@ -107,12 +144,6 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        // All code execuded, assume all houses are destroyed
-        foreach (House house in houses)
-        {
-            house.repairable = false;
-        }
-
         // Set slime spawn rate to be extremely high
         EnemyManager.instance.spawnPercentage = 100;
         EnemyManager.instance.spawnIntervalCheck = 0.5f;

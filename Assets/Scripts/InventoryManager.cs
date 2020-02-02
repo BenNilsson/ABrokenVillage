@@ -298,6 +298,23 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void DisplayTip(string text)
+    {
+        StopAllCoroutines();
+        StartCoroutine(DisplayTipOnScreen(text));
+    }
+
+    private IEnumerator DisplayTipOnScreen(string text)
+    {
+        if(text != "")
+        {
+            toolTipTxt.text = text;
+            yield return new WaitForSeconds(3f);
+            toolTipTxt.text = "";
+        }
+        yield return null;
+    }
+
     public IEnumerator DisplayToolText()
     {
         Item i = hotbarSlots[curSelectedSlot - 1].item;
