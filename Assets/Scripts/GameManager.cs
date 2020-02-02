@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour
         else return false;
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void UpdateTimer()
     {
         timeSinceLevelLoaded += Time.deltaTime;
