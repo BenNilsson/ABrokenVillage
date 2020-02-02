@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject inventoryMenu;
+    [SerializeField] private GameObject wonMenu;
     [SerializeField] private TextMeshProUGUI timer;
     public Transform houseParent;
 
@@ -29,10 +30,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         AddHousesToList();
         timeSinceLevelLoaded = Time.deltaTime;
+        wonMenu.SetActive(false);
     }
 
     private void Update()
@@ -41,8 +43,8 @@ public class GameManager : MonoBehaviour
 
         if(CheckWin())
         {
-            Debug.Log("YOU WON!!!!");
             Time.timeScale = 0;
+            if (wonMenu.activeSelf == false) wonMenu.SetActive(true);
         }
 
         CheckHouseRepairable();
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private bool CheckWin()
     {
-        if (timeSinceLevelLoaded >= 300)
+        if (timeSinceLevelLoaded >= 10)
         {
             return true;
         }

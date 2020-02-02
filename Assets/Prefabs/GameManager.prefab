@@ -45,5 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathMenu: {fileID: 0}
   inventoryMenu: {fileID: 0}
+  wonMenu: {fileID: 0}
+  timer: {fileID: 0}
   houseParent: {fileID: 0}
   houses: []
