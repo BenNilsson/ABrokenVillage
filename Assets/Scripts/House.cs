@@ -30,6 +30,7 @@ public class House : MonoBehaviour, IRepairable, IDamageable
     public void Repair(int amount)
     {
         if (!repairable) return;
+
         if (curHealth != maxHealth)
         {
 

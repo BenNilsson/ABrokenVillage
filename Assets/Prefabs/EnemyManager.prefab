@@ -43,3 +43,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825c0207e3f83f4db755c4c444de25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesToSpawn:
+  - {fileID: 8945935115952976398, guid: 3611982408b7e0a4085f328b92c26d85, type: 3}
+  - {fileID: 1326239162742581841, guid: 4c04ecce716b03e4b86474b84c313f8f, type: 3}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  houses:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnPercentage: 35
+  spawnIntervalCheck: 3

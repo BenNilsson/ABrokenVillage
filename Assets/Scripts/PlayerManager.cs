@@ -10,11 +10,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public Animator anim;
 
     public bool isAlive = true;
+    public bool canTakeDamage = false;
 
     [SerializeField] private int maxHealth = 10;
 
     public int GetHealth { get { return curHealth; } }
-    private int curHealth;
+    public int curHealth;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     {
         curHealth = maxHealth;
         isAlive = true;
+        canTakeDamage = false;
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
+        if (!canTakeDamage) return;
         RemoveHealth(amount);
     }
 }
