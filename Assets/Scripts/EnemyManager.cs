@@ -35,7 +35,7 @@ public class EnemyManager : MonoBehaviour
         if(PlayerManager.instance.isAlive)
         {
             // Ignore anything until 10 seconds has elapsed
-            if (Time.time >= timeWhenLevelLoaded + 10)
+            if (Time.time >= timeWhenLevelLoaded + 15)
             {
                 if (Time.time > timeSinceLastCheck + spawnIntervalCheck)
                 {

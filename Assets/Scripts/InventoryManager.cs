@@ -218,7 +218,7 @@ public class InventoryManager : MonoBehaviour
             {
                 slot.gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
                 slot.amount = 0;
-                curItem = null;
+                if(slot == hotbarSlots[curSelectedSlot - 1]) curItem = null;
                 if (slot.item.stackable) slot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
                 slot.item = null;
                 return true;

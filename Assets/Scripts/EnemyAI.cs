@@ -39,7 +39,9 @@ public class EnemyAI : MonoBehaviour
 
     public Transform FindClosestHouse()
     {
-        Transform closestHouse = new GameObject().transform;
+        GameObject go = new GameObject();
+        Transform closestHouse = go.transform;
+        Destroy(go);
         float distance = Mathf.Infinity;
         for (int i = 0; i < EnemyManager.instance.houses.Count; i++)
         {
@@ -127,7 +129,6 @@ public class EnemyAI : MonoBehaviour
                     damageable.TakeDamage(dmgAmount);
                 }
             }
-            break;
         }
     }
 
