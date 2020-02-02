@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         wonMenu.SetActive(false);
         Time.timeScale = 1;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         if(!PlayerManager.instance.isAlive)
         {
             // Enable some form of death menu
+            if(Cursor.visible != true) Cursor.visible = true;
             deathMenu.SetActive(true);
             inventoryMenu.SetActive(false);
         }
@@ -72,7 +73,6 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
         deathMenu.SetActive(false);
@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
         inventoryMenu.SetActive(true);
