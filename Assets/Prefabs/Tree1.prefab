@@ -99,7 +99,7 @@ MonoBehaviour:
   amountToDrop: {x: 2, y: 4}
   itemToDropPrefab: {fileID: 3546132844632173843, guid: 0bf8a08d1aa5b8d4bb6dba2fba24c32f,
     type: 3}
-  respawnTime: {x: 15, y: 20}
+  respawnTime: {x: 60, y: 80}
   sprites:
   - {fileID: 21300000, guid: e4af79492aa04ad4cbed072b07478555, type: 3}
   - {fileID: 21300000, guid: d10b825409458284d9332e40359d1592, type: 3}
@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5528186265842786052, guid: b403a553e057f904584d1d16c44e13aa,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5528186265842786055, guid: b403a553e057f904584d1d16c44e13aa,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -211,11 +216,6 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5528186265842786052, guid: b403a553e057f904584d1d16c44e13aa,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b403a553e057f904584d1d16c44e13aa, type: 3}

@@ -57,7 +57,6 @@ public class Harvest : MonoBehaviour, IHarvestable
 
     public void HarvestItem()
     {
-        Debug.Log("Harvested item " + gameObject.name);
         DropItem();
         harvestable = false;
         GetComponent<Collider2D>().enabled = false;

@@ -130,6 +130,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6277288662691072438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3899880584681082451}
+  m_Layer: 10
+  m_Name: particleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3899880584681082451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277288662691072438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19, y: -0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8945935115952976395}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8945935115952976398
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +194,7 @@ Transform:
   m_Children:
   - {fileID: 5166762640807611656}
   - {fileID: 1247461090755722908}
+  - {fileID: 3899880584681082451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -182,6 +213,7 @@ MonoBehaviour:
   health: 2
   hitParticle: {fileID: 4182655168644057546, guid: 8433acb1347e2b340a9aa7d3a4c8e26d,
     type: 3}
+  particleSpawnPoint: {fileID: 3899880584681082451}
   anim: {fileID: 1340851832}
 --- !u!58 &8945935115952976437
 CircleCollider2D:
