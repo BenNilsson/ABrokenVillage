@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         // Set slime spawn rate to be extremely high
         EnemyManager.instance.spawnPercentage = 100;
         EnemyManager.instance.spawnIntervalCheck = 0.5f;
+        PlayerManager.instance.canTakeDamage = true;
     }
 
     private void AddHousesToList()
