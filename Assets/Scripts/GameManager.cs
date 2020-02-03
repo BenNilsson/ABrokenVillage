@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     [SerializeField] private GameObject deathMenu;
+    [SerializeField] private TextMeshProUGUI winText;
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject wonMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TextMeshProUGUI timer;
+    [SerializeField] private float timeToWinGame = 300f;
     public Transform houseParent;
 
     private float timeSinceLevelLoaded;
@@ -42,31 +44,50 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {
-        UpdateTimer();
-
-        if(CheckWin())
-        {
-            Time.timeScale = 0;
-            inventoryMenu.SetActive(false);
-            timer.text = "";
-            if (wonMenu.activeSelf == false) wonMenu.SetActive(true);
-            Cursor.visible = true;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-
-        CheckHouseRepairable();
-        
+    { 
         if(!PlayerManager.instance.isAlive)
         {
             // Enable some form of death menu
             if(Cursor.visible != true) Cursor.visible = true;
             deathMenu.SetActive(true);
             inventoryMenu.SetActive(false);
+        }else
+        {
+            UpdateTimer();
+
+            if (CheckWin())
+            {
+                Time.timeScale = 0;
+                inventoryMenu.SetActive(false);
+                timer.text = "";
+                if (wonMenu.activeSelf == false) wonMenu.SetActive(true);
+                Cursor.visible = true;
+
+                bool d = false;
+                foreach(House house in houses)
+                {
+                    if(house.destroyed)
+                    {
+                        d = true;
+                        break;
+                    }
+                }
+
+                if(d)
+                {
+                    winText.text = "You Win!\nSort of... Sadly The Village Did Not Make It...";
+                }else
+                {
+                    winText.text = "You Win!\nThank you for saving the village";
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+            }
+
+            CheckHouseRepairable();
         }
     }
 
@@ -95,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     private bool CheckWin()
     {
-        if (timeSinceLevelLoaded >= 300)
+        if (timeSinceLevelLoaded >= timeToWinGame)
         {
             return true;
         }
